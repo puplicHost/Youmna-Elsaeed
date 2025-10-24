@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dee.spa22</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+ 
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700&display=swap" rel="stylesheet">
+
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --primary-color: #8208be;
+            --secondary-color: #8208be;
+            --accent-color: #8208be;
+            --dark-color: #420460;
+            --light-color: #8208be;
+            --text-color: #fff;
+            --card-bg: #14021d;
+            --border-color: #fff;
+        }
+
+
+        body {
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--dark-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        /* تحسين عرض عناوين الأقسام */
+.project-section h2 {
+    position: relative;
+    font-size: 2.2rem;
+    color: #fff;
+    text-align: center;
+    margin: 60px 0 40px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    font-family: 'Almarai', sans-serif;
+}
+
+.project-section h2::after {
+    content: "";
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #8208be, #c94ef3);
+    box-shadow: 0 0 10px rgba(130, 8, 190, 0.6);
+}
+
+/* خلفية خفيفة خلف العنوان */
+.project-section-title {
+    background: rgba(130, 8, 190, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 15px 25px;
+    display: inline-block;
+    border-radius: 10px;
+    color: var(--text-color);
+}
+
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--nav-bg);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .back-btn {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-btn:hover {
+            color: var(--accent-color);
+        }
+
+        /* Header */
+        .project-header {
+            background: var(--nav-bg);
+            color: white;
+            padding: 120px 0 60px;
+            text-align: center;
+        }
+
+        .project-header h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .project-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Content */
+        .project-content {
+            padding: 80px 0;
+        }
+
+        .project-section {
+            margin-bottom: 60px;
+        }
+
+        .project-section h2 {
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .project-description {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            border: 1px solid var(--border-color);
+        }
+
+        .project-description p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-color);
+        }
+
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .post-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease;
+        }
+
+        .post-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .post-image {
+            width: 100%;
+            height: 50%;
+            object-fit: contain;
+        border-radius: 5vw;
+        }
+
+        .post-content {
+            padding: 20px;
+        }
+
+        .post-content h3 {
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+
+        .post-content p {
+            color: var(--text-color);
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .contact-info {
+            background-color: var(--light-color);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .contact-info p {
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .contact-info strong {
+            color: var(--accent-color);
+        }
+
+        .project-links {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 12px 30px;
+            border: 2px solid var(--text-color);
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin: 0 10px;
+        }
+
+        .project-link:hover {
+            background-color: var(--accent-color);
+            color: var(--dark-color);
+            transform: translateY(-2px);
+        }
+
+        .post-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+            margin-bottom: 10px;
+            margin-right: 10px;
+
+        }
+
+        .post-button:hover {
+            background-color: var(--nav-bg);
+            transform: scale(1.05);
+            border: #f3a0c9;
+        }
+
+        footer {
+            background-color: var(--light-color);
+            color: white;
+            padding: 50px 0 20px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background-color: var(--card-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Videos Section */
+        .videos-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .video-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease;
+        }
+
+
+
+
+
+
+        .video-info strong {
+            color: var(--accent-color);
+        }
+
+        .script-item {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border-color);
+        }
+
+        .script-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .script-info {
+            padding: 20px;
+        }
+
+        .script-info h3 {
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+
+        .script-info p {
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .script-files {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border-color);
+        }
+
+        .script-files h3 {
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        .script-links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .script-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 12px 20px;
+            background-color: var(--light-color);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .script-link:hover {
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            transform: translateX(5px);
+        }
+
+        .script-link i {
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 768px) {
+            .project-header h1 {
+                font-size: 2rem;
+            }
+
+            .posts-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .post-content {
+                padding: 15px;
+            }
+
+            .post-content h3 {
+                font-size: 1.1rem;
+            }
+
+            .post-content p {
+                font-size: 0.95rem;
+            }
+
+            .contact-info {
+                padding: 12px;
+            }
+
+            .videos-section {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .project-video {
+                height: 250px;
+            }
+
+            .video-content {
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .project-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .project-header p {
+                font-size: 1rem;
+            }
+
+            .post-content h3 {
+                font-size: 1rem;
+            }
+
+            .post-content p {
+                font-size: 0.9rem;
+            }
+
+            .project-video {
+                height: 200px;
+            }
+
+            .video-content {
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="container nav-container">
+            <a href="index.html" class="logo"> YE</a>
+            <a href="index.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i>
+                Back to Portfolio
+            </a>
+        </div>
+    </nav>
+
+    <header class="project-header">
+        <div class="container">
+            <h1> dee.spa22 </h1>
+        </div>
+    </header>
+
+    <section class="project-content">
+        <div class="container">
+            <div class="project-section">
+                <!-- ===================================================== -->
+          <h2><span class="project-section-title">Campaign to Announce a New Service</span></h2>
+
+
+                <div class="posts-grid">
+
+                    <!-- بوست 1 -->
+                    <div class="post-card" dir="rtl">
+                        <img src="./projects/dee/1.png" alt="Post 1" class="post-image">
+                        <div class="post-content">
+                            <p>
+
+                                📣 انتباه يا بنات الجبيل📣
+                                في شي جديد وفخم جاي بالطريق 🌟
+
+                                جالسين نحضّر لكم خدمة جديدة في السبا المنزلي، راح تغيّر إحساسكم ببشرتكم من أول جلسة🤫
+
+                                خمنوا وش هي الخدمة؟
+                                وأول واحدة تجاوب صح، لها جلسة مجانية على حسابنا.
+
+                                لا تفوتين الفرصة، يمكن تكونين أنتِ الفائزة.🔥
+
+                            </p>
+                        </div>
+                        <a href="https://www.instagram.com/p/DLmskcVNqSU/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+                            class="post-button"> View Post</a>
+                    </div>
+
+                    <!-- بوست 2 -->
+                    <div class="post-card" dir="rtl">
+                        <img src="./projects/dee/2.png" alt="Post 1" class="post-image">
+                        <div class="post-content">
+                            <p>
+
+                                ندري أنها مفاجأة، بس سهلناها عليك شوي😉
+
+                                شاركينا في التعليقات إذا تعرفين حل اللغز😊</p>
+                        </div>
+                        <a href="https://www.instagram.com/p/DLm0DHSteH3/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+                            class="post-button">View Post </a>
+                    </div>
+
+                    <!-- بوست 3 -->
+                    <div class="post-card" dir="rtl">
+                        <img src="./projects/dee/3.png" alt="Post 1" class="post-image">
+                        <div class="post-content">
+                            <p>
+                                اكتبي جوابك في الكومنت👇، ويمكن تكونين الفائزة بجلسة مجانية😍
+
+                            </p>
+                        </div>
+                        <a href="https://www.instagram.com/p/DLm4HK8t09j/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+                            class="post-button">View Post </a>
+                    </div>
+
+                    <!-- بوست 4 -->
+                    <div class="post-card" dir="rtl">
+                        <img src="./projects/dee/4.png" alt="Post 1" class="post-image">
+                        <div class="post-content">
+                            <p>
+                                بعد طول الانتظار عن الخدمة الجديدة من حقك تدلعين نفسك بجلسة حمام مغربي من Dee Spa💚
+
+                                دلّلي جسمك بجلسة تجمع:
+                                🌿 بخار يفتح المسام.
+                                🌿 طين طبيعي ينظّف بعمق.
+                                🌿 تقشير ينعّم البشرة.
+                                🌿 وزيوت فخمة تثبّت ريحة النظافة لوقت طويل.
+
+                                📲 احجزي الآن جلستك عبر الواتساب: 0544182214
+
+                                📍الخدمات المنزلية متوفرة بالجبيل
+                            </p>
+                        </div>
+                        <a href="https://www.instagram.com/p/DLsenBvNyEG/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+                            class="post-button">View Post </a>
+                    </div>
+                    <!-- بوست 5 -->
+                    <div class="post-card" dir="rtl">
+                        <img src="./projects/dee/5.png" alt="Post 1" class="post-image">
+                        <div class="post-content">
+                            <p>
+                                بخار. طين. و تقشير كامل للجسم، في جلسة واحدة صممت خصيصًا لك.💚
+
+                                احجزي جلستك الآن:0544182214
+                            </p>
+                        </div>
+                        <a href="https://www.instagram.com/p/DLserKmtbcG/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+                            class="post-button">View Post </a>
+                    </div>
+
+                    <!-- بوست 6 -->
+                    <div class="post-card" dir="rtl">
+                        <img src="./projects/dee/6.png" alt="Post 1" class="post-image">
+                        <div class="post-content">
+                            <p>
+                                تحسين بالتعب؟ بشرتك باهتة؟ يمكن حان وقت الحمام المغربي✨
+
+                                📲 احجزي جلستك اليوم: 0544182214
+                            </p>
+                        </div>
+                        <a href="https://www.instagram.com/p/DLuiVajt76k/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+                            class="post-button">View Post </a>
+                    </div>
+
+
+                </div>
+                <!-- ====================================================== -->
+                <!-- ===================================================== -->
+                <br>
+                    <h2><span class="project-section-title">Salon Partnership Announcement with InterContinental Al Jubail Hotel</span></h2>
+
+                <div class="posts-grid">
+
+                    <!-- بوست 1 -->
+                    <div class="post-card" dir="rtl">
+                        <img src="./projects/dee/7.png" alt="Post 1" class="post-image">
+                        <div class="post-content">
+                            <p>
+                                في لحظات ما تقدرين توصفينها بالكلام، بس تحسين فيها إنك تنفصلين عن العالم كله.💚
+
+                                تتوقعين وش المفاجأة اللي نحضرها🤔
+                            </p>
+                        </div>
+                        <a href="https://www.instagram.com/p/DM5uuchNS16/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+                            class="post-button"> View Post</a>
+                    </div>
+
+                    <!-- بوست 2 -->
+                    <div class="post-card" dir="rtl">
+                        <img src="./projects/dee/8.png" alt="Post 1" class="post-image">
+                        <div class="post-content">
+                            <p>
+                                بنات الجبيل، استعدوا لدلع غير مسبوق 🤫
+
+                                شيء خيالي في طريقه إليكم ترقبوا التفاصيل قريباً.
+                            </p>
+                        </div>
+                        <a href="https://www.instagram.com/p/DM5u1Q6NVVP/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+                            class="post-button">View Post </a>
+                    </div>
+
+                    <!-- بوست 3 -->
+                    <div class="post-card" dir="rtl">
+                        <img src="./projects/dee/9.png" alt="Post 1" class="post-image">
+                        <div class="post-content">
+                            <p>
+                                قريباً جداً راح نقلب الويكند لعالم من الدلال والاسترخاء.💚
+
+                                ترقبوا التفاصيل قريباً
+                            </p>
+                        </div>
+                        <a href="https://www.instagram.com/p/DM5u75FtUAg/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+                            class="post-button">View Post </a>
+                    </div>
+
+                    <!-- بوست 4 -->
+                    <div class="post-card" dir="rtl">
+                        <img src="./projects/dee/10.png" alt="Post 1" class="post-image">
+                        <div class="post-content">
+                            <p>
+                                يسعدنا أن نعلن عن شراكتنا المميزة مع فندق انتركونتيننتال بالجبيل 🤩
+
+                                استعدوا لتجربة استرخاء ودلال لا مثيل لها على شاطئ الجبيل.
+                            </p>
+                        </div>
+                        <a href="https://www.instagram.com/p/DNiwpxiINcu/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+                            class="post-button">View Post </a>
+                    </div>
+                    <!-- بوست 5 -->
+                    <div class="post-card" dir="rtl">
+                        <img src="./projects/dee/11.png" alt="Post 1" class="post-image">
+                        <div class="post-content">
+                            <p>
+                                مع شراكتنا الجديدة، نقدم لكم تجربة متكاملة من الاسترخاء والدلال، مساجات منعشة، أجواء
+                                شاطئية ساحرة، وخصومات مميزة.🎉
+
+                                فقط ادفعي تذكرة دخول البحر، والدلع علينا.😉
+
+                                سجلي الآن من خلال موقع الفندق
+                            </p>
+                        </div>
+                        <a href="https://www.instagram.com/p/DNiw3YlIMjv/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+                            class="post-button">View Post </a>
+                    </div>
+
+                    <!-- بوست 6 -->
+                    <div class="post-card" dir="rtl">
+                        <img src="./projects/dee/12.png" alt="Post 1" class="post-image">
+                        <div class="post-content">
+                            <p>
+                                جهزي شنطة البحر، ودلعك علينا.
+
+                                كل يوم سبت راح تتدلعين معنا بخدمة مساج مجانية على شاطئ الجبيل وفي جو هادي ومنعش.
+
+                                وبعد المساج راح تحصلين على كوبون خصم 30% على خدماتنا المنزلية.
+
+                                وش تنتظرين احجزي الآن من خلال موقع الفندق.
+                            </p>
+                        </div>
+                        <a href="https://www.instagram.com/p/DNlcdo_t3BY/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+                            class="post-button">View Post </a>
+                    </div>
+
+                    <!-- بوست 7 -->
+                    <div class="post-card" dir="rtl">
+                        <img src="./projects/dee/13.png" alt="Post 1" class="post-image">
+                        <div class="post-content">
+                            <p>
+                                الويكند قرب وموعدنا يتجدد كل سبت مع مساج Dee Home Spa المجاني في انتركونتيننتال الجبيل.
+                                لا تنسين تجي مع صديقاتك.
+
+                                احجزي تذكرتك الآن من خلال موقع الفندق.
+                            </p>
+                        </div>
+                        <a href="https://www.instagram.com/p/DNlckNptBcu/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+                            class="post-button">View Post </a>
+                    </div>
+
+                </div>
+                <!-- ====================================================== -->
+                             <!-- ===================================================== -->
+                <br>
+                   <h2><span class="project-section-title">National Day Campaign</span></h2>
+
+                <div class="posts-grid">
+
+                    <!-- بوست 1 -->
+                    <div class="post-card" dir="rtl">
+                        <img src="./projects/dee/14.png" alt="Post 1" class="post-image">
+                        <div class="post-content">
+                            <p>
+                           اليوم الوطني الـ95 بدأ.. ومعاه بدأت عروضنا الخاصة!
+من أرض العز.. بجودنا نرتقي 💚
+
+لا تفوتين عروض اليوم الوطني الاستثنائية – متاحة لفترة محدودة حتى 30 سبتمبر
+                            </p>
+                        </div>
+                        <a href="https://www.instagram.com/p/DOgVnUrjTUB/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+                            class="post-button"> View Post</a>
+                    </div>
+
+                    <!-- بوست 2 -->
+                    <div class="post-card" dir="rtl">
+                        <img src="./projects/dee/15.png" alt="Post 1" class="post-image">
+                        <div class="post-content">
+                            <p>
+                عزنا بفزعتنا.. وفزعتنا لك غير!
+دلّعي نفسك في اليوم الوطني الـ95 مع خصم 95 ريال على أي خدمة فوق 300 ريال + قهوة سعودية مجانًا ☕💚
+
+العرض ساري لفترة محدودة.. لا يفوتك ✨
+                            </p>
+                        </div>
+                        <a href="https://www.instagram.com/p/DOgYRLcDV_i/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+                            class="post-button">View Post </a>
+                    </div>
+
+                    <!-- بوست 3 -->
+                    <div class="post-card" dir="rtl">
+                        <img src="./projects/dee/16.png" alt="Post 1" class="post-image">
+                        <div class="post-content">
+                            <p>
+                     عزنا بكرمنا.. وكرمنا لكِ باقات استثنائية ✨
+عروض اليوم الوطني الـ95 بأسعار ما تتكرر + قهوة سعودية مجانًا مع كل خدمة ☕💚
+
+احجزي الآن وعيشي تجربة تدلعك من كل النواحي 💆‍♀️
+                            </p>
+                        </div>
+                        <a href="https://www.instagram.com/p/DOgYYrUDfLk/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+                            class="post-button">View Post </a>
+                    </div>
+
+                    <!-- بوست 4 -->
+                    <div class="post-card" dir="rtl">
+                        <img src="./projects/dee/17.png" alt="Post 1" class="post-image">
+                        <div class="post-content">
+                            <p>
+             طموحنا ما له نهاية… مثلك تمامًا 💫
+عشان كذا نطوّر خدماتنا بشكل دائم ونحرص إن كل زيارة لك تكون تجربة ما تتكرّر 💆‍♀️
+
+احجزي موعدك معنا الآن واستمتعي بعروض اليوم الوطني
+                            </p>
+                        </div>
+                        <a href="https://www.instagram.com/p/DOgYsq-DcWV/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+                            class="post-button">View Post </a>
+                    </div>
+                    <!-- بوست 5 -->
+                    <div class="post-card" dir="rtl">
+                        <img src="./projects/dee/18.png" alt="Post 1" class="post-image">
+                        <div class="post-content">
+                            <p>
+                    عزنا برؤيتنا ✨
+رؤيتنا في Dee Home Spa إننا نخلق لك تجربة تجمع بين الراحة، الفخامة، والدلال اللي تستاهلينه 💚
+                            </p>
+                        </div>
+                        <a href="https://www.instagram.com/p/DOgY3BnDUFs/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+                            class="post-button">View Post </a>
+                    </div>
+
+                    <!-- بوست 6 -->
+                    <div class="post-card" dir="rtl">
+                        <img src="./projects/dee/19.png" alt="Post 1" class="post-image">
+                        <div class="post-content">
+                            <p>
+                         الأصالة ما تنتهي…
+
+ومنها نستلهم تفاصيل خدماتنا 💚
+
+جلسات الحمام المغربي، التربيمة بالودع، والنيلة الزرقاء… كلها أصالة ممزوجة برفاهية حديثة ✨
+                            </p>
+                        </div>
+                        <a href="https://www.instagram.com/p/DOgY6lejS_Y/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+                            class="post-button">View Post </a>
+                    </div>
+
+                
+
+                </div>
+                <!-- ====================================================== -->
+                <div class="project-links">
+                    <a href="https://www.instagram.com/dee.spa22/" class="project-link" target="_blank">
+                        <i class="fab fa-instagram" aria-hidden="true"></i> Instagram Page
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer id="footer">
+        <div class="container">
+            <div class="footer-content">
+
+                <div class="footer-section">
+                    <h3>Youmna Elsaeed</h3>
+                    <p>Content Creator | Copywriter & Social Media Specialist </p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#about">About Me</a></li>
+                        <li><a href="#skills">Skills</a></li>
+
+                        <li><a href="#projects">Projects</a></li>
+
+
+                        <li><a href="#contact">Contact Me</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Me</h3>
+                    <div class="social-links">
+                        <a href="mailto:youmnae234@gmail.com" class="social-link" title="Send me an email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="https://wa.me/201273112394" class="social-link" target="_blank"
+                            title="Contact via WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/youmnaelsaeed-4280981b2" class="social-link"
+                            target="_blank" title="LinkedIn Profile">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Youmna Elsaeed. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+
+</html>
